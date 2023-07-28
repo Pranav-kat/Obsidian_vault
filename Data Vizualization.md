@@ -1,6 +1,7 @@
 ---
 share: true  
 --- 
+
 Which attributes to be removed?
 - set the threshold to remove the rows.
 + decision of removing the rows depends on the data scientist
@@ -19,7 +20,8 @@ Which attributes to be removed?
 -   accuracy: how close you get to the bulls eye out of n times
 -   precision: how far you stray from the bulls eye 
 -   goodness of fit (stats related)
-+ ```python
+
+```python
 import pandas as pd
 import numpy as np
 import random
@@ -31,3 +33,5 @@ df = pd.DataFrame({
 })
 df['cat_column'] = pd.Categorical(df2['cat_column'])
 ```
+
+
