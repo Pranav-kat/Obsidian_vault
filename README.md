@@ -8,3 +8,5 @@ Initial Configuration:
 - Create the notes with key share = true in the frontmatter
 - Open the command palette to upload the active file
 - Voila!! Your notes have been pushed to your repo.
+
+Pro Tip: Refer the notes on Obsidian for better experience
