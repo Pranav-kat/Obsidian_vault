@@ -22,14 +22,14 @@ This is a div tag and hyper links do not work here.
 <p>
 this is para tag in .md
 </p>
-
+=="  This is highlighted text created by inserting text between two equals sign "==
 Create subsections by adding indentation for its text
  like this
-
 
 > This is a blockquote denoted by > 
 > Extended by space and nested using doubles >>
 > >this is how you achieve it
+> >> hey
 > >:)
 
 **Bold can be done like this**   ******** ** or double underscores 
