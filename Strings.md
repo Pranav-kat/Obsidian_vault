@@ -6,4 +6,4 @@ share: true
 .equals() : checks if the value is same
 
 - Every method in string creates a new object in the heap memory.
-- 
+- Efficient way of manipulating and dealing with strings is by using StringBuilder. 
