@@ -82,12 +82,18 @@ if(Math.abs(lh-rh)>1) return -1;
         int rh = maxDepth(root.right, diameter);
         diameter[0] = Math.max(lh+rh, diameter[0]);
         return 1 + Math.max(lh, rh);
-
-  
-
     }
  ```
 
+
+### Identical Trees
+ ```java 
+ public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p == null && q == null) return true;
+        if(p == null || q == null || p.val != q.val) return false;
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);          
+    }
+ ```
 ## AVL 
 Adelson Velskii Lendis
 - A self balancing binary tree
