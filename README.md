@@ -1,4 +1,5 @@
 # Obsidian_vault
+My Personal notes vault integrated with Github
 
 Automating the notes publishing from Obsidian Vault to my personal Github repo.
 
@@ -9,4 +10,4 @@ Initial Configuration:
 - Open the command palette to upload the active file
 - Voila!! Your notes have been pushed to your repo.
 
-Pro Tip: Refer the notes on Obsidian for better experience
+Pro Tip: Refer the notes on Obsidian for better UI experience
