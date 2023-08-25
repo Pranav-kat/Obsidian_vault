@@ -2,22 +2,22 @@
 share: true
 ---
 
-Multidimensional ArrayList access
- arr.get(i).get(j) == same as arr\[i]\[j]
-
 Int to String to int
-	String.valueOf();
-	Integer.parseInt();
+ ```Java
+ String.valueOf();
+ Integer.parseInt();
 	
  int c = a;
   for(int j=0;j<>n;j++){
                 c += Math.pow(2, j)*b;
                 System.out.printf("%s ",c);
             }
-            System.out.println();	
+            System.out.println()
+```
 						
 STATIC INITIALIZATION CLASS
-	<static boolean flag = true; 
+ ```java
+ static boolean flag = true; 
  static int B,H;
  static{
  Scanner scan = new Scanner(System.in);
@@ -30,9 +30,11 @@ STATIC INITIALIZATION CLASS
  }else if(B<=0 || H<=0){
  flag=false;
  System.out.println("java.lang.Exception: Breadth and height must be positive");
- }>
+ }
+```
 	
 HASHMAP
+	 
 	 static int migratoryBirds(List<Integer> arr) {
         Map<Integer, Integer> birds = new HashMap<>();
         int key = 0;
@@ -46,9 +48,10 @@ HASHMAP
         }
         key = Collections.max(birds.entrySet(), Map.Entry.comparingByValue()).getKey();
         return key;
-       } >
+       } 
 	
 SET
+	
 	public static int sockMerchant(int n, List<Integer> ar) {
     Set<Integer> colors = new HashSet<>();
     int pairs = 0;
@@ -108,13 +111,10 @@ Electronic pairs Problem
  max = keyboards[i]+pendrives[j];
  }
  }
-
-Collection Methods: 
-	Collections.sort(List) // ascending sort
-	Collections.sort(copy,Collections.reverseOrder()); // descending sort 
 	
 Climbing the Leaderboard Problem
-	public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
+ ```java
+ public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
     List<Integer> ans = new ArrayList<>();
     TreeSet<Integer> copy = new TreeSet<Integer>();
     copy.addAll(ranked);
@@ -127,9 +127,11 @@ Climbing the Leaderboard Problem
      }
      return ans;
      }
-	
+ ```
+
 Climbing the Leaderboard Problem Optimized Code
-	import java.io.*;
+ ```java
+ 	import java.io.*;
  import java.util.*;
  import java.text.*;
  import java.math.*;
@@ -181,10 +183,12 @@ Climbing the Leaderboard Problem Optimized Code
         }
         return 1;
     }   
- } //>
-	
+ } 
+ ```
+
 Picking Numbers Problem Optimized Code
-	import java.io.*;
+ ```java
+  import java.io.*;
  import java.util.*;
 
  public class Solution
@@ -202,9 +206,11 @@ Picking Numbers Problem Optimized Code
         System.out.println(out);
     }
  }
+ ```
 
 Reverse Integer 
-	public static int reverse(int m){
+ ```java
+ public static int reverse(int m){
     int temp=0;
     for( ;m != 0; m=m/10)   
     {  
@@ -212,8 +218,10 @@ Reverse Integer
     temp = temp * 10 + remainder;    
     }
     return temp;  
+ ```
 
 Minimum  Distance 
+ ```java
  public static int minimumDistances(List<Integer> a) {
      Map<Integer, Integer> hm = new HashMap<>();
     int minDist= Integer.MAX_VALUE;
@@ -228,13 +236,46 @@ Minimum  Distance
     if(minDist == Integer.MAX_VALUE) minDist=-1;
     return minDist;
     }
+ ```
 
 Extra long integers
+ ```java
  BigInteger fact=BigInteger.valueOf(1);
-
+ ```
 
 SkipList
  Skip list is a data structure that can be used as an alternative to balanced binary trees (refer to Trees chapter). As compared to a binary tree, skip lists allow quick search, insertion and deletion of elements. This is achieved by using probabilistic balancing rather than strictly enforce balancing. It is basically a linked list with additional pointers such that intermediate nodes can be skipped. It uses a random number generator to make some decisions.
 
-
-
+Union of two sorted arrays
+ ```java
+ public static int[] union(int[] A, int[] B){
+	int i=0;
+	int j=0;
+	ArrayList<Integer> list = new ArrayList<>();
+	while(i<A.length && j<B.length){
+	if(A[i]<B[j]){
+	if(list.size()==0 || !list.contains(A[i])){
+	list.add(A[i]);
+	 }
+	 i++;
+	}else{
+	if(list.size==0 || !list.contains(B[j])){
+	list.add(B[j]);
+	}
+	 j++;	}
+	}
+	while(i<A.length){
+	if(list.size()==0 || !list.contains(A[i])){
+	list.add(A[i]);
+	 }
+	 i++;
+	}
+	while(j<B.length){
+	if(list.size()==0 || !list.contains(B[j])){
+	list.add(B[j]);
+	 }
+	 j++;
+	}
+	return list.toArray();
+	}
+ ```
