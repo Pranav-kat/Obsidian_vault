@@ -30,8 +30,6 @@ In Binary Search Trees, all the computations take O(logN) time.
 
 
  }
-
- 
  }
  ```
 
@@ -43,6 +41,51 @@ In Binary Search Trees, all the computations take O(logN) time.
 
 	return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 	} 
+ ```
+
+### Balanced tree?
+ ```java
+ public boolean isBalanced(TreeNode root){
+ return maxDepth(root)!=-1;
+ }
+ 
+ public int maxDepth(TreeNode root){
+ if(root == null) return 0;
+
+ int lh = maxDepth(root.left);
+ if(lh==-1) return -1;
+ int rh = maxDepth(root.right);
+ if(rh==-1) return -1;
+
+if(Math.abs(lh-rh)>1) return -1;
+
+ return 1+ Math.max(lh,rh);
+  }
+
+
+ ```
+
+### Diameter of a tree
+ Definition: Longest path between any two nodes. 
+ PS: Need not pass through the root node. 
+ ```java
+ public int diameterOfBinaryTree(TreeNode root) {
+        int[] diameter = new int[1];
+        maxDepth(root, diameter);
+        return diameter[0];
+    }
+
+    public int maxDepth(TreeNode root, int[] diameter){
+        if(root == null) return 0;
+
+        int lh = maxDepth(root.left, diameter);
+        int rh = maxDepth(root.right, diameter);
+        diameter[0] = Math.max(lh+rh, diameter[0]);
+        return 1 + Math.max(lh, rh);
+
+  
+
+    }
  ```
 
 ## AVL 
