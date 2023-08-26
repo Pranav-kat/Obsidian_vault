@@ -94,6 +94,46 @@ if(Math.abs(lh-rh)>1) return -1;
         return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);          
     }
  ```
+
+
+### Maximum path sum
+ ```java
+ public int maxPathSum(TreeNode root) {
+        int[] diameter = new int[1];
+        diameter[0] = Integer.MIN_VALUE;
+        maxDepth(root, diameter);
+        return diameter[0];
+    }
+
+    public int maxDepth(TreeNode root, int[] diameter){
+        if(root == null) return 0;
+
+        int lh = Math.max(0,maxDepth(root.left, diameter));
+        int rh = Math.max(0,maxDepth(root.right, diameter));
+
+        diameter[0] = Math.max(diameter[0], lh+rh+root.val);
+
+        return root.val + Math.max(lh,rh);
+
+    }
+ ```
+
+
+
+## BST
+### Search in BST
+ ```java
+ public TreeNode searchBST(TreeNode root, int val) {
+        if(root == null) return null;
+
+        if(val<root.val) return searchBST(root.left, val);
+
+        if(val>root.val) return searchBST(root.right, val);
+
+        if(val == root.val) return root;
+        
+        return null;                                }
+ ```
 ## AVL 
 Adelson Velskii Lendis
 - A self balancing binary tree
