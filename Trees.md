@@ -119,7 +119,31 @@ if(Math.abs(lh-rh)>1) return -1;
  ```
 
 
+### Zig Zag Traversal
+ ```java
+ public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        Queue <TreeNode > queue = new LinkedList <> ();
+        List<List<Integer>> wrapList = new ArrayList <>();
 
+        if (root == null) return wrapList; 
+        queue.offer(root);
+        boolean flag = true;
+        while (!queue.isEmpty()) {
+            int levelNum = queue.size();
+            ArrayList < Integer > subList = new ArrayList < Integer > (levelNum);
+            for (int i = 0; i < levelNum; i++) {
+                int index = i;
+                if (queue.peek().left != null) queue.offer(queue.peek().left);
+                if (queue.peek().right != null) queue.offer(queue.peek().right);
+                if (flag == true) subList.add(queue.poll().val);
+                else subList.add(0, queue.poll().val);
+            }
+            flag = !flag;
+            wrapList.add(subList);
+        }
+        return wrapList;
+    }
+ ```
 ## BST
 ### Search in BST
  ```java
@@ -133,6 +157,18 @@ if(Math.abs(lh-rh)>1) return -1;
         if(val == root.val) return root;
         
         return null;                                }
+ ```
+
+
+### Insertion in BST
+ ```java
+  public TreeNode insertIntoBST(TreeNode root, int val) {
+        if(root == null) { return new TreeNode(val);}
+        if(val<root.val) root.left = insertIntoBST(root.left, val);
+        else root.right = insertIntoBST(root.right, val);
+
+        return root;
+    }
  ```
 ## AVL 
 Adelson Velskii Lendis
