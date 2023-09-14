@@ -2,11 +2,15 @@
 share: true
 ---
 # The First Wave
-Hardware Defined Data Centers \[HDDC]
+On - Premise aka Hardware Defined Data Centers \[HDDC]
 
 
-# The second Wave
+# The Second Wave
 Virtualization aka Software Defined Data Centers \[SDDC]
 
 # The Third Wave
-Pay as you go
+Pay as you go aka Serverless
+- No time required
+- On - demand availability
+- dispersed across locations called data centers
+- 
