@@ -12,42 +12,150 @@ Initial Configuration:
 
 Pro Tip: Refer the notes on Obsidian for better UI experience
 
--- Create the database
-CREATE DATABASE Stock;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="input-container">
+            <input type="text" id="new-task" placeholder="Add a new task">
+            <select id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button id="add-task">Add Task</button>
+        </div>
+        <ul id="task-list"></ul>
+    </div>
 
--- Use the database
-USE Stock;
+    <script src="scripts.js"></script>
+</body>
+</html>
 
--- Create the assets table
-CREATE TABLE assets (
-    asset_id INT AUTO_INCREMENT PRIMARY KEY,
-    company_name VARCHAR(255) NOT NULL,
-    stock_price DECIMAL(10, 2) NOT NULL,
-    no_of_stocks_bought INT NOT NULL,
-    user_id INT NOT NULL,
-    current_price DECIMAL(10, 2) NOT NULL,
-    purchase_date DATE NOT NULL
-);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
--- Insert 20 entries into the assets table
-INSERT INTO assets (company_name, stock_price, no_of_stocks_bought, user_id, current_price, purchase_date) VALUES
-('Apple', 150.00, 10, 1, 155.00, '2024-01-15'),
-('Microsoft', 200.00, 5, 2, 210.00, '2024-02-20'),
-('Google', 1800.00, 2, 3, 1850.00, '2024-03-10'),
-('Amazon', 3500.00, 1, 4, 3550.00, '2024-04-05'),
-('Tesla', 700.00, 8, 5, 720.00, '2024-05-22'),
-('Facebook', 250.00, 7, 6, 260.00, '2024-06-17'),
-('Netflix', 500.00, 6, 7, 510.00, '2024-07-01'),
-('Adobe', 600.00, 4, 8, 610.00, '2024-01-25'),
-('Intel', 55.00, 20, 9, 60.00, '2024-02-14'),
-('AMD', 85.00, 15, 10, 90.00, '2024-03-09'),
-('NVIDIA', 550.00, 3, 11, 560.00, '2024-04-28'),
-('Oracle', 75.00, 12, 12, 80.00, '2024-05-14'),
-('Cisco', 45.00, 18, 13, 50.00, '2024-06-19'),
-('Salesforce', 250.00, 6, 14, 255.00, '2024-07-03'),
-('IBM', 140.00, 9, 15, 145.00, '2024-01-19'),
-('Snap', 60.00, 14, 16, 65.00, '2024-02-25'),
-('Uber', 40.00, 16, 17, 45.00, '2024-03-15'),
-('Lyft', 35.00, 17, 18, 40.00, '2024-04-11'),
-('Spotify', 150.00, 8, 19, 155.00, '2024-05-30'),
-('Square', 240.00, 5, 20, 245.00, '2024-06-25');
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#new-task {
+    flex: 2;
+    padding: 5px;
+}
+
+#priority {
+    flex: 1;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+li.low {
+    background-color: #e0f7fa;
+}
+
+li.medium {
+    background-color: #ffe082;
+}
+
+li.high {
+    background-color: #ff8a80;
+}
+
+li.completed {
+    text-decoration: line-through;
+    color: grey;
+}
+
+button.delete {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+document.getElementById('add-task').addEventListener('click', addTask);
+
+function addTask() {
+    const taskInput = document.getElementById('new-task');
+    const priorityInput = document.getElementById('priority');
+    const taskText = taskInput.value.trim();
+    const taskPriority = priorityInput.value;
+
+    if (taskText === '') {
+        alert('Please enter a task');
+        return;
+    }
+
+    const taskList = document.getElementById('task-list');
+
+    const li = document.createElement('li');
+    li.className = taskPriority;
+    li.innerHTML = `
+        <span class="task-text">${taskText}</span>
+        <div>
+            <button class="complete">Complete</button>
+            <button class="delete">Delete</button>
+        </div>
+    `;
+
+    taskList.appendChild(li);
+
+    // Clear the input
+    taskInput.value = '';
+    priorityInput.value = 'low';
+
+    li.querySelector('.complete').addEventListener('click', () => {
+        li.classList.toggle('completed');
+    });
+
+    li.querySelector('.delete').addEventListener('click', () => {
+        taskList.removeChild(li);
+    });
+}
